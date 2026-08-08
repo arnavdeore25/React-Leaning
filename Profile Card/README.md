@@ -1,16 +1,64 @@
-# React + Vite
+# Profile Card
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React + Vite demo that displays a responsive profile card component built with Tailwind CSS.
+This repository is a minimal UI project intended to learn component structure, styling, and a simple development workflow using Vite.
 
-Currently, two official plugins are available:
+**Built with**
+- React 19
+- Vite
+- Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Getting started
 
-## React Compiler
+1. Install dependencies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+2. Run the dev server
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run dev
+```
+
+3. Build for production
+
+```bash
+npm run build
+```
+
+4. Preview the production build locally
+
+```bash
+npm run preview
+```
+
+Available scripts
+
+- `dev`: Start the Vite dev server with HMR
+- `build`: Create a production build
+- `preview`: Preview the production build
+- `lint`: Run ESLint across the project
+
+Project structure (important files)
+
+- `index.html` — App entry HTML
+- `src/main.jsx` — App bootstrap
+- `src/App.jsx` — Main app component
+- `src/components/ProfileCard.jsx` — Profile card component
+- `src/components/Skills.jsx` — Skills list component
+- `src/components/Button.jsx` — Reusable button
+- `src/assets/` — Images and static assets
+
+Notes
+
+- Tailwind CSS is included as a dependency. If you want to customize styles, add or update `tailwind.config.js`.
+- ESLint is configured for basic linting; run `npm run lint` to check code style.
+
+Contributing
+
+Feel free to open issues or submit pull requests. For small changes, fork the repo and send a PR.
+
+
+Enjoy building!
