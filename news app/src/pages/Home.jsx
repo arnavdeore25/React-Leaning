@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
+import CatagoryBar from "../components/CatagoryBar";
 import NewsList from "../components/NewsList";
-
+import Footer from "../components/Footer";
 
 function Home() {
   const [news, setNews] = useState([]);
@@ -17,7 +18,7 @@ function Home() {
       setLoading(true);
       const query = search.trim() ? `&q=${encodeURIComponent(search.trim())}` : "";
       const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=us&category=General${query}&apiKey=----your-api-key-----`
+        `https://newsapi.org/v2/top-headlines?country=us&category=${category}${query}&apiKey----------YOUR-API-KEY------------`
       );
       setNews(response.data.articles || []);
       setError(null);
@@ -37,8 +38,10 @@ function Home() {
     <>
       <Navbar />
       <SearchBar search={search} setSearch={setSearch} onSearch={fetchNews} />
+      <CatagoryBar category={category} setCategory={setCategory} />
       
       <NewsList news={news} />
+      <Footer />
     </>
   );
 }
