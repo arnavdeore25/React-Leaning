@@ -1,6 +1,6 @@
 # ⚛️ React Learning Journey
 
-Welcome to my React playground! 🚀
+Welcome to my React Learning Repo! 🚀
 
 This repository was created to document my learning process, experiments, and mini-projects as I learn and **React**.
 
