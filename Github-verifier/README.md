@@ -1,16 +1,41 @@
-# React + Vite
+ # GitHub Verifier
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ GitHub Verifier is a small React application that checks whether a GitHub username exists. Search for a username to view the matching profile's avatar, bio, repository count, follower count, and following count.
 
-Currently, two official plugins are available:
+ The app uses the public [GitHub Users API](https://docs.github.com/en/rest/users/users#get-a-user) and does not require a GitHub token for local use.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+ ## Features
 
-## React Compiler
+ - Search for any public GitHub username
+ - Display profile information and account statistics
+ - Open the complete profile on GitHub
+ - Show loading and not-found states
+ - Responsive layout for mobile and desktop screens
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ ## Tech Stack
 
-## Expanding the ESLint configuration
+ - React
+ - Vite
+ - Tailwind CSS
+ - Axios
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ ## Project Structure
+
+ ```text
+ src/
+ ├── components/
+ │   ├── SearchBar.jsx    # Username input and submit button
+ │   └── UserCard.jsx     # GitHub profile details and statistics
+ ├── App.jsx              # Main application and API request flow
+ ├── App.css              # App-level styles
+ ├── index.css            # Global styles and Tailwind import
+ └── main.jsx             # React application entry point
+ ```
+
+ ## GitHub API Notes
+
+ The application uses GitHub's unauthenticated API endpoint. GitHub applies rate limits to unauthenticated requests, so repeated searches may temporarily be limited. The app only requests public user profile data.
+
+ ## License
+
+ This project is intended for learning and demonstration purposes.
