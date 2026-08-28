@@ -16,12 +16,12 @@ function SearchBar({ searchUser }) {
         placeholder="Enter GitHub username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className="flex-1 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-blue-500"
+        className="flex-1 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-orange-900"
       />
 
       <button
         type="submit"
-        className="rounded-lg bg-blue-500 px-5 py-2 text-white hover:bg-blue-600"
+        className="rounded-lg bg-orange-600 px-5 py-2 text-white hover:bg-orange-900"
       >
         Verify
       </button>
