@@ -1,51 +1,83 @@
 function UserCard({ user }) {
   return (
-    <div className="mt-6 rounded-2xl border border-gray-200 bg-gradient-to-br from-white via-white to-orange-50/60 p-5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:p-6">
-      <div className="flex items-center gap-4 sm:gap-5">
+    <div className="mt-6 overflow-hidden rounded-[28px] border border-violet-400/20 bg-slate-900/80 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.55)] transition duration-300 hover:-translate-y-1 sm:p-6">
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
         <img
           src={user.avatar_url}
           alt="GitHub profile"
-          className="h-20 w-20 shrink-0 rounded-full border-4 border-white object-cover shadow-md ring-2 ring-orange-100 sm:h-24 sm:w-24"
+          className="h-24 w-24 rounded-full border-4 border-violet-400/30 object-cover shadow-lg shadow-violet-950/40 ring-4 ring-slate-800 sm:h-28 sm:w-28"
         />
 
-        <div className="min-w-0">
-          <h2 className="truncate text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
-            {user.name || user.login}
-          </h2>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              {user.name || user.login}
+            </h2>
+            {user.type && (
+              <span className="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                {user.type}
+              </span>
+            )}
+          </div>
 
-          <p className="mt-1 truncate text-sm text-orange-700">@{user.login}</p>
+          <p className="mt-2 text-base text-violet-300">@{user.login}</p>
+
+          <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+            {user.location && (
+              <span className="rounded-full border border-slate-700 bg-slate-800/80 px-2.5 py-1">
+                {user.location}
+              </span>
+            )}
+            {user.company && (
+              <span className="rounded-full border border-slate-700 bg-slate-800/80 px-2.5 py-1">
+                {user.company}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
-      <p className="mt-5 break-words text-sm leading-relaxed text-gray-600 sm:text-base">
-        {user.bio || "No bio available"}
+      <p className="mt-6 text-sm leading-7 text-slate-300 sm:text-base">
+        {user.bio || "No bio available for this profile yet."}
       </p>
 
-      <div className="mt-5 grid grid-cols-3 divide-x divide-gray-200 rounded-xl border border-gray-200 bg-white/80 py-3 text-center shadow-sm">
-        <div className="px-2">
-          <p className="text-lg font-bold text-gray-900">{user.public_repos}</p>
-          <p className="text-[11px] font-medium uppercase tracking-wide text-gray-500 sm:text-xs">Repositories</p>
-        </div>
-
-        <div className="px-2">
-          <p className="text-lg font-bold text-gray-900">{user.followers}</p>
-          <p className="text-[11px] font-medium uppercase tracking-wide text-gray-500 sm:text-xs">Followers</p>
-        </div>
-
-        <div className="px-2">
-          <p className="text-lg font-bold text-gray-900">{user.following}</p>
-          <p className="text-[11px] font-medium uppercase tracking-wide text-gray-500 sm:text-xs">Following</p>
-        </div>
+      <div className="mt-6 grid grid-cols-3 gap-3">
+        {[
+          { label: "Repositories", value: user.public_repos },
+          { label: "Followers", value: user.followers },
+          { label: "Following", value: user.following },
+        ].map((item) => (
+          <div
+            key={item.label}
+            className="rounded-2xl border border-slate-700 bg-slate-950/70 p-4 text-center"
+          >
+            <p className="text-2xl font-black text-white">{item.value}</p>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+              {item.label}
+            </p>
+          </div>
+        ))}
       </div>
 
-      <a
-        href={user.html_url}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-5 block rounded-xl bg-gray-900 py-3 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-orange-700 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-gray-300 active:translate-y-0 sm:rounded-lg"
-      >
-        View GitHub Profile
-      </a>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={user.html_url}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex flex-1 items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 to-cyan-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/20 transition duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/15 focus:outline-none focus:ring-4 focus:ring-violet-400/30"
+        >
+          View GitHub Profile
+        </a>
+
+        <a
+          href={`https://github.com/${user.login}?tab=repositories`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-2xl border border-slate-600 bg-slate-800/80 px-5 py-3 text-sm font-semibold text-slate-100 transition duration-200 hover:border-violet-400 hover:text-violet-200 focus:outline-none focus:ring-4 focus:ring-violet-400/20"
+        >
+          Repositories
+        </a>
+      </div>
     </div>
   );
 }
